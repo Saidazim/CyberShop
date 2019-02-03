@@ -10,6 +10,13 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './products/store/product.reducer';
 import { ProductsModule } from './products/products.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+ 
+library.add(fas, far);
 
 @NgModule({
   declarations: [
@@ -23,9 +30,10 @@ import { ProductsModule } from './products/products.module';
       product: productReducer,
     }),
     BrowserAnimationsModule,
+    FontAwesomeModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
-    ProductsModule
+    ProductsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
