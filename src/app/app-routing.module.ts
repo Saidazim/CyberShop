@@ -6,16 +6,11 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
-        path: '',
-        component: LayoutComponent,
-      },
+  { path: '', component: AppComponent, children: [
+      { path: '', component: LayoutComponent, },
     ]
-  }
+  },
+  { path: 'admin', loadChildren:'./admin/admin.module#AdminModule' }
 ];
 
 @NgModule({
