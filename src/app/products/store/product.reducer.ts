@@ -5,6 +5,7 @@ import * as ProductActions from './product.actions';
 
 export const initialState = {
   name: 'iPhone',
+  description: 'This is overrated phone. Do not buy it!',
   price: 500
 }
 
