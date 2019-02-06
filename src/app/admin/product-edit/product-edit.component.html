@@ -1,3 +1,30 @@
-<p>
-  product-edit works!
-</p>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+  <h1 mat-dialog-title *ngIf="!data.editMode">New product</h1>
+  <h1 mat-dialog-title *ngIf="data.editMode">Edit {{ data.product.name}}</h1>
+  
+  <div mat-dialog-content>
+    <p>Fill out product details</p>
+    <input type="text" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Name" formControlName="name">
+    <input type="number" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Price" formControlName="price">
+    <input type="text" class="my-1" nbInput fullWidth fieldSize="large" placeholder="Description" formControlName="description">
+  </div>
+
+  <div mat-dialog-actions class="float-right">
+    <button 
+    type="button"
+    nbButton 
+    status="danger"
+    size="xsmall"
+    class="m-1"
+    (click)="onCancel()">Cancel</button>
+
+    <button 
+    type="submit"
+    nbButton 
+    status="success"
+    size="xsmall"
+    class="m-1"
+    [disabled]="!productForm.valid">Submit</button>
+  </div>
+</form>
