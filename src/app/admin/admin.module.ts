@@ -6,9 +6,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProductControlComponent } from './product-control/product-control.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 @NgModule({
-  declarations: [ProductControlComponent],
+  declarations: [ProductControlComponent, ProductEditComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
