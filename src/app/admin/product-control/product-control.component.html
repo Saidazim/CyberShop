@@ -1,3 +1,67 @@
-<p>
-  product-control works!
-</p>
+<nb-layout>
+
+  <nb-layout-header fixed>
+  <!-- Insert header here -->
+  </nb-layout-header>
+
+  <nb-layout-column>
+    
+    <nb-card>
+      <nb-card-header>
+        Table
+      </nb-card-header>
+
+      <nb-card-body>
+
+        <mat-table [dataSource]="products | async" class="mat-elevation-z1">
+        <!-- <mat-table [dataSource]="dataSource"> -->
+        
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.name }} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.description }} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let product"> {{ product.price }} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>
+                <button nbButton size="xsmall" status="success" (click)="onAdd()">
+                  <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+                </button>
+              </mat-header-cell>
+        
+              <mat-cell *matCellDef="let row; let i=index;">
+                <button nbButton size="xsmall" status="warning" (click)="onEdit(row, i)">
+                    <fa-icon [icon]="['fas', 'pen']"></fa-icon> 
+                </button>
+        
+                <button nbButton size="xsmall" status="danger" (click)="onDelete(i)">
+                    <fa-icon [icon]="['fas', 'trash']"></fa-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        
+
+      </nb-card-body>
+    </nb-card>
+
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+  <!-- Insert footer here -->
+  </nb-layout-footer>
+
+</nb-layout>
