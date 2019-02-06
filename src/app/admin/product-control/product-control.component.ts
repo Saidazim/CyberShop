@@ -16,7 +16,7 @@ import { DeleteProduct } from 'src/app/products/store/product.actions';
 })
 export class ProductControlComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'price', 'actions'];
+  displayedColumns: string[] = ['name', 'price', 'description', 'actions'];
   products: Observable<Product[]>
  
   constructor(private store: Store<AppState>, public dialog: MatDialog) {
