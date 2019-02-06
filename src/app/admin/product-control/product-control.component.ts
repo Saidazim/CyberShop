@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/products/product.model';
-import { Observable } from 'rxjs';
-import { AppState } from 'src/app/app.reducers';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { Product } from 'src/app/products/product.model';
+import { AppState } from 'src/app/app.reducers';
+import { ProductEditComponent } from '../product-edit/product-edit.component';
+import { DeleteProduct } from 'src/app/products/store/product.actions';
 
 
 @Component({
@@ -15,7 +19,7 @@ export class ProductControlComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'price', 'actions'];
   products: Observable<Product[]>
  
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, public dialog: MatDialog) {
     this.products = this.store.select('product')
    }
 
@@ -23,15 +27,29 @@ export class ProductControlComponent implements OnInit {
   }
 
   onAdd() {
-    console.log('Add');
+    this.openDialog({
+      editMode: false,
+    })
   }
 
   onEdit(product: Product, index: number) {
-    console.log('Edit', product);
+    this.openDialog({
+      editMode: true,
+      product,
+      index
+    })
   }
 
-  onDelete(product: Product) {
-    console.log('delete');
+  onDelete(index: number) {
+    this.store.dispatch(new DeleteProduct(index))
+  }
+
+  openDialog(data: object): void {
+    const dialogRef = this.dialog.open(ProductEditComponent, { data })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
   }
 
 }
