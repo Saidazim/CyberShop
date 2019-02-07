@@ -1,64 +1,49 @@
-<nb-layout>
+<nb-card>
+  <nb-card-header>
+    Table
+  </nb-card-header>
 
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
-  </nb-layout-header>
+  <nb-card-body>
 
-  <nb-layout-column>
+    <table mat-table [dataSource]="products | async" class="mat-elevation-z1">
     
-    <nb-card>
-      <nb-card-header>
-        Table
-      </nb-card-header>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
+      </ng-container>
 
-      <nb-card-body>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let product"> {{ product.price }} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let product"> {{ product.description }} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>
+            <button nbButton size="xsmall" status="success" class="m-1" (click)="onAdd()">
+              <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+            </button>
+          </th>
+    
+          <td mat-cell *matCellDef="let row; let i=index;">
+            <button nbButton size="xsmall" status="warning" class="m-1" (click)="onEdit(row, i)">
+                <fa-icon [icon]="['fas', 'pen']"></fa-icon> 
+            </button>
+    
+            <button nbButton size="xsmall" status="danger" class="m-1" (click)="onDelete(i)">
+                <fa-icon [icon]="['fas', 'trash']"></fa-icon>
+            </button>
+          </td>
+        </ng-container>
 
-        <table mat-table [dataSource]="products | async" class="mat-elevation-z1">
-        
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let product"> {{ product.name }} </td>
-          </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
-          <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> Price </th>
-            <td mat-cell *matCellDef="let product"> {{ product.price }} </td>
-          </ng-container>
-        
-          <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef> Description </th>
-            <td mat-cell *matCellDef="let product"> {{ product.description }} </td>
-          </ng-container>
-        
-          <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef>
-                <button nbButton size="xsmall" status="success" class="m-1" (click)="onAdd()">
-                  <fa-icon [icon]="['fas', 'plus']"></fa-icon>
-                </button>
-              </th>
-        
-              <td mat-cell *matCellDef="let row; let i=index;">
-                <button nbButton size="xsmall" status="warning" class="m-1" (click)="onEdit(row, i)">
-                    <fa-icon [icon]="['fas', 'pen']"></fa-icon> 
-                </button>
-        
-                <button nbButton size="xsmall" status="danger" class="m-1" (click)="onDelete(i)">
-                    <fa-icon [icon]="['fas', 'trash']"></fa-icon>
-                </button>
-              </td>
-            </ng-container>
+  </nb-card-body>
+</nb-card>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-      </nb-card-body>
-    </nb-card>
-
-  </nb-layout-column>
-
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
-  </nb-layout-footer>
-
-</nb-layout>
