@@ -2,10 +2,10 @@ import { Product } from './product.model';
 import * as ProductActions from './product.actions';
 
 
-export const initialState = {
+export const initialState: Product = {
   name: 'iPhone',
+  price: 500,
   description: 'This is overrated phone. Do not buy it!',
-  price: 500
 }
 
 export function productReducer(state:Product[] = [initialState], action: ProductActions.ProductActions) {
