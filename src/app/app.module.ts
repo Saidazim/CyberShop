@@ -9,8 +9,7 @@ import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from './core/core.module';
-import { productReducer } from './stores/product-store/product.reducer';
-import { categoryReducer } from './stores/category-store/category.reducer';
+import { reducers } from './app.reducers';
 
 import { ProductsModule } from './products/products.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -29,10 +28,7 @@ library.add(fas, far);
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    StoreModule.forRoot({
-      product: productReducer,
-      category: categoryReducer,
-    }),
+    StoreModule.forRoot(reducers),
     BrowserAnimationsModule,
     FontAwesomeModule,
     NbThemeModule.forRoot({ name: 'default' }),
