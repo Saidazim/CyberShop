@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../../stores/product-store/product.model';
 import { DeleteProduct } from 'src/app/stores/product-store/product.actions';
-import { AppState } from 'src/app/app.reducers';
+import { AppState } from 'src/app/stores/app.reducers';
 import { ProductEditComponent } from '../product-edit/product-edit.component';
 
 
