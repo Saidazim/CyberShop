@@ -1,4 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Category } from 'src/app/stores/category-store/category.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/stores/app.reducers';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UpdateCategory, AddCategory } from 'src/app/stores/category-store/category.actions';
+
+export interface DialogData{
+  editMode: boolean,
+  category: Category,
+  index: number
+  }
 
 @Component({
   selector: 'app-category-edit',
@@ -7,9 +19,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryEditComponent implements OnInit {
 
-  constructor() { }
+  categoryForm: FormGroup
+  
+  constructor(private store: Store<AppState>,
+    public dialogRef: MatDialogRef<CategoryEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private fb: FormBuilder) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+      this.initForm()
+    }
+  
+    initForm() {
+      if (this.data.editMode) {
+        this.categoryForm =this.fb.group({
+          name: [this.data.category.name, Validators.required],
+        })
+      } else {
+        this.categoryForm = this.fb.group({
+          name: ['', Validators.required],
+        })
+      }
+    }
+  
+    onSubmit() {
+      const form = this.categoryForm.value
+      
+      if (this.data.editMode) {
+        this.store.dispatch(new UpdateCategory({
+          category: form,
+          index: this.data.index
+        }))
+      } else {
+        this.store.dispatch(new AddCategory(form))
+      }
+      this.dialogRef.close(form)
+    }
+  
+    onCancel() {
+      this.dialogRef.close()
+    }
 
 }

@@ -1,3 +1,29 @@
-<p>
-  category-edit works!
-</p>
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+  <h1 mat-dialog-title *ngIf="!data.editMode">New category</h1>
+  <h1 mat-dialog-title *ngIf="data.editMode">Edit {{ data.category.name}}</h1>
+  
+  <div mat-dialog-content>
+    <p>Fill out category details</p>
+    <input type="text" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Name" formControlName="name">
+  </div>
+
+  <div mat-dialog-actions class="float-right">
+    <button 
+    type="button"
+    nbButton 
+    status="danger"
+    size="xsmall"
+    class="m-1"
+    (click)="onCancel()">Cancel</button>
+
+    <button 
+    type="submit"
+    nbButton 
+    status="success"
+    size="xsmall"
+    class="m-1"
+    [disabled]="!categoryForm.valid">Submit</button>
+  </div>
+  
+</form>
