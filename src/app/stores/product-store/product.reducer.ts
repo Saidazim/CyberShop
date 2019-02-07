@@ -1,5 +1,4 @@
-import { Product } from '../product.model';
-import { Action } from '@ngrx/store';
+import { Product } from './product.model';
 import * as ProductActions from './product.actions';
 
 

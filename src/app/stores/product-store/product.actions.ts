@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Product } from '../product.model';
+import { Product } from './product.model';
 
 
 export enum ProductActionTypes {

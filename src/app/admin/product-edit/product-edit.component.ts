@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { UpdateProduct, AddProduct } from 'src/app/products/store/product.actions';
-import { Product } from 'src/app/products/product.model';
+import { UpdateProduct, AddProduct } from 'src/app/stores/product-store/product.actions';
+import { Product } from '../../stores/product-store/product.model';
 import { AppState } from 'src/app/app.reducers';
 
 export interface DialogData{

@@ -3,10 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Product } from 'src/app/products/product.model';
+import { Product } from '../../stores/product-store/product.model';
+import { DeleteProduct } from 'src/app/stores/product-store/product.actions';
 import { AppState } from 'src/app/app.reducers';
 import { ProductEditComponent } from '../product-edit/product-edit.component';
-import { DeleteProduct } from 'src/app/products/store/product.actions';
 
 
 @Component({

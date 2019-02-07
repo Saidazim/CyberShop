@@ -9,7 +9,8 @@ import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from './core/core.module';
-import { productReducer } from './products/store/product.reducer';
+import { productReducer } from './stores/product-store/product.reducer';
+
 import { ProductsModule } from './products/products.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
