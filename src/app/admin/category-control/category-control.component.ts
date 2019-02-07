@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { Category } from 'src/app/stores/category-store/category.model';
 import { AppState } from 'src/app/stores/app.reducers';
+import { DeleteCategory } from 'src/app/stores/category-store/category.actions';
 import { CategoryEditComponent } from '../category-edit/category-edit.component';
 
 @Component({
@@ -36,6 +37,10 @@ export class CategoryControlComponent implements OnInit {
       category,
       index
     })
+  }
+
+  onDelete(index: number) {
+    this.store.dispatch(new DeleteCategory(index))
   }
 
   openDialog(data: object): void {
