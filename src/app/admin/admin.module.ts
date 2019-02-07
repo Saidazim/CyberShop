@@ -33,6 +33,9 @@ import { CategoryEditComponent } from './category-edit/category-edit.component';
     MatDialogModule,
     NbInputModule,
   ],
-  entryComponents: [ProductEditComponent]
+  entryComponents: [
+    ProductEditComponent,
+    CategoryEditComponent,
+  ]
 })
 export class AdminModule { }
