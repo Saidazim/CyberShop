@@ -11,6 +11,7 @@ import { ProductControlComponent } from './product-control/product-control.compo
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { CategoryControlComponent } from './category-control/category-control.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { CategoryEditComponent } from './category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
     ProductEditComponent,
     CategoryControlComponent,
     AdminLayoutComponent,
+    CategoryEditComponent,
   ],
   imports: [
     CommonModule,
