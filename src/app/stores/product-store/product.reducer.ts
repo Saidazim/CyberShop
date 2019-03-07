@@ -10,12 +10,16 @@ export const initialState: Product = {
 
 export function productReducer(state:Product[] = [initialState], action: ProductActions.ProductActions) {
   switch (action.type) {
+    case ProductActions.ProductActionTypes.GET_PRODUCT_SUCCESS:
+    return [...action.payload]
+
     case ProductActions.ProductActionTypes.ADD_PRODUCT:
       return [...state, action.payload]
     
     case ProductActions.ProductActionTypes.UPDATE_PRODUCT:
-      state[action.payload.index] = action.payload.product
-      return [...state]
+      let updatedState = state
+      updatedState[action.payload.index] = action.payload.product
+      return [...updatedState]
     
     case ProductActions.ProductActionTypes.DELETE_PRODUCT:
       state.splice(action.payload, 1)
