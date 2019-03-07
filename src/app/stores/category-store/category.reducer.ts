@@ -16,8 +16,9 @@ export function categoryReducer(state: Category[] = [initialState], action: Cate
       return [...state, action.payload]
     
     case CategoryActions.CategoryActionTypes.UPDATE_CATEGORY:
-      state[action.payload.index] = action.payload.category
-      return [...state]
+    let updatedState = state
+    updatedState[action.payload.index] = action.payload.category
+    return [...updatedState]
     
     case CategoryActions.CategoryActionTypes.DELETE_CATEGORY:
       state.splice(action.payload, 1)
