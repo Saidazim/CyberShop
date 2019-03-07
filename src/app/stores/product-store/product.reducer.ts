@@ -3,12 +3,13 @@ import * as ProductActions from './product.actions';
 
 
 export const initialState: Product = {
+  id: 'a',
   name: 'iPhone',
   price: 500,
   description: 'This is overrated phone. Do not buy it!',
 }
 
-export function productReducer(state:Product[] = [initialState], action: ProductActions.ProductActions) {
+export function productReducer(state: Product[] = [initialState], action: ProductActions.ProductActions) {
   switch (action.type) {
     case ProductActions.ProductActionTypes.GET_PRODUCT_SUCCESS:
     return [...action.payload]
