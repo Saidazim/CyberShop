@@ -12,7 +12,7 @@ export const initialState: Product = {
 export function productReducer(state: Product[] = [initialState], action: ProductActions.ProductActions) {
   switch (action.type) {
     case ProductActions.ProductActionTypes.GET_PRODUCT_SUCCESS:
-    return [...action.payload]
+      return [...action.payload]
 
     case ProductActions.ProductActionTypes.ADD_PRODUCT:
       return [...state, action.payload]
