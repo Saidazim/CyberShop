@@ -19,6 +19,7 @@ import { CoreModule } from './core/core.module';
 import { reducers } from './stores/app.reducers';
 import { ProductEffects } from './stores/product-store/product.effects';
 import { ProductsModule } from './products/products.module';
+import { CategoryEffects } from './stores/category-store/category.effects';
 
  
 library.add(fas, far);
@@ -33,7 +34,7 @@ library.add(fas, far);
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     StoreModule.forRoot(reducers), 
-    EffectsModule.forRoot([ProductEffects]),
+    EffectsModule.forRoot([ProductEffects, CategoryEffects]),
     BrowserAnimationsModule,
     FontAwesomeModule,
     NbThemeModule.forRoot({ name: 'default' }),

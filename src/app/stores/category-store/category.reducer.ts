@@ -8,6 +8,9 @@ export const initialState: Category = {
 
 export function categoryReducer(state: Category[] = [initialState], action: CategoryActions.CategoryActions) {
   switch (action.type) {
+    case CategoryActions.CategoryActionTypes.GET_CATEGORY_SUCCESS:
+      return [...action.payload]
+
     case CategoryActions.CategoryActionTypes.ADD_CATEGORY:
       return [...state, action.payload]
     
