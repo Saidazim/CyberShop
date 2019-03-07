@@ -1,3 +1,22 @@
-<p>
-  product-list works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let product of products | async; let i = index">
+    <nb-card>
+        
+        <nb-card-header>
+          {{ product.name }}
+        </nb-card-header>
+        
+        <nb-card-body>
+          
+          <p>Description: {{ product.description }}</p>
+          <p></p>
+        
+        </nb-card-body>
+        
+        <nb-card-footer>Price:<b> {{ product.price }} UZS </b></nb-card-footer>
+
+      </nb-card>
+    </div>
+  </div>
+</div>
