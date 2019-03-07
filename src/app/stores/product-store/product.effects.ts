@@ -14,7 +14,13 @@ export class ProductEffects {
   getProducts$ = this.actions$
     .pipe(
       ofType(ProductActions.ProductActionTypes.GET_PRODUCT),
-      switchMap(() => this.db.collection<Product[]>('products').valueChanges()
+      switchMap(() =>  this.db.collection<Product[]>('products').snapshotChanges().pipe(
+        map(categories => categories.map(category => {
+          const data = category.payload.doc.data() as Product[];
+          const id = category.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
         .pipe(
           map(products => ({ type: '[PRODUCT] Get Success', payload: products })),
           catchError(() => EMPTY)
@@ -24,6 +30,5 @@ export class ProductEffects {
   constructor(
     private db: AngularFirestore,
     private actions$: Actions,
-    
   ) {}
 }

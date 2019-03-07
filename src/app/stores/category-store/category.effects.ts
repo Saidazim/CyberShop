@@ -14,7 +14,13 @@ export class CategoryEffects {
   getCategories$ = this.actions$
     .pipe(
       ofType(CategoryActions.CategoryActionTypes.GET_CATEGORY),
-      switchMap(() => this.db.collection<Category[]>('categories').valueChanges()
+      switchMap(() => this.db.collection<Category[]>('categories').snapshotChanges().pipe(
+        map(categories => categories.map(category => {
+          const data = category.payload.doc.data() as Category[];
+          const id = category.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
         .pipe(
           map(categories => ({ type: '[CATEGORY] Get Success', payload: categories })),
           catchError(() => EMPTY)
