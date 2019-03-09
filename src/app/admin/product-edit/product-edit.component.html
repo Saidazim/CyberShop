@@ -8,6 +8,9 @@
     <input type="text" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Name" formControlName="name">
     <input type="number" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Price" formControlName="price">
     <input type="text" class="my-1" nbInput fullWidth fieldSize="large" placeholder="Description" formControlName="description">
+    <nb-select placeholder="Category" size="small" outline status="success" formControlName="category">
+      <nb-option *ngFor="let category of categories | async; let i = index" [value]="category.name">{{ category.name }}</nb-option>
+    </nb-select>
   </div>
 
   <div mat-dialog-actions class="float-right">

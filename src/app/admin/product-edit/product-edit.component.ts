@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { UpdateProduct, AddProduct } from 'src/app/stores/product-store/product.actions';
 import { Product } from '../../stores/product-store/product.model';
 import { AppState } from 'src/app/stores/app.reducers';
+import { Category } from 'src/app/stores/category-store/category.model';
+import { Observable } from 'rxjs';
 
 export interface DialogData{
   editMode: boolean,
@@ -21,11 +23,14 @@ export interface DialogData{
 export class ProductEditComponent implements OnInit {
 
   productForm: FormGroup
+  categories: Observable<Category[]>
 
   constructor(private store: Store<AppState>,
     public dialogRef: MatDialogRef<ProductEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder) { 
+      this.categories = this.store.select('category')
+    }
 
   ngOnInit() {
     this.initForm()
@@ -37,19 +42,20 @@ export class ProductEditComponent implements OnInit {
         name: [this.data.product.name, Validators.required],
         price: [this.data.product.price, Validators.required],
         description: [this.data.product.description, Validators.required],
+        category: [this.data.product.category, Validators.required],
       })
     } else {
       this.productForm = this.fb.group({
         name: ['', Validators.required],
         price: [0, Validators.required],
         description: ['', Validators.required],
+        category: ['', Validators.required],
       })
     }
   }
 
   onSubmit() {
     const form = this.productForm.value
-    
     if (this.data.editMode) {
       this.store.dispatch(new UpdateProduct({
         product: form,
