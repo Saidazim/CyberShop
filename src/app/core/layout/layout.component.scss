@@ -1,6 +1,15 @@
 .nb-category-list-item{
   cursor: pointer;
 }
+i{
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #a4abb3;
+  margin-top: 6px;
+}
+.nb-search{
+  font-size: 2rem;
+}
 .category-item-wrapper{
   margin: 5px 0px;
 }
@@ -15,3 +24,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+// :host ::ng-deep nb-layout-column {
+//   height: 50vw;
+//   background: #f4f4f7;
+// }
