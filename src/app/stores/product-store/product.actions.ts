@@ -30,10 +30,7 @@ export class AddProduct implements Action {
 export class UpdateProduct implements Action {
   readonly type = ProductActionTypes.UPDATE_PRODUCT
 
-  constructor(public payload: {
-    product: Product,
-    index: number
-  }) { }
+  constructor(public payload: Product) { }
 }
 
 export class DeleteProduct implements Action {

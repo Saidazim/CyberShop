@@ -32,16 +32,15 @@ export class ProductControlComponent implements OnInit {
     })
   }
 
-  onEdit(product: Product, index: number) {
+  onEdit(product: Product) {
     this.openDialog({
       editMode: true,
-      product,
-      index
+      product
     })
   }
 
-  onDelete(index: number) {
-    this.store.dispatch(new DeleteProduct(index))
+  onDelete(id: number) {
+    this.store.dispatch(new DeleteProduct(id))
   }
 
   openDialog(data: object): void {

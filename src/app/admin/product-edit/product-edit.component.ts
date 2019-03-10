@@ -57,10 +57,8 @@ export class ProductEditComponent implements OnInit {
   onSubmit() {
     const form = this.productForm.value
     if (this.data.editMode) {
-      this.store.dispatch(new UpdateProduct({
-        product: form,
-        index: this.data.index
-      }))
+      let updatedProduct = {...this.data.product, ...form}
+      this.store.dispatch(new UpdateProduct(updatedProduct))
     } else {
       this.store.dispatch(new AddProduct(form))
     }
