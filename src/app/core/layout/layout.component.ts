@@ -1,22 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { NbSidebarService } from '@nebular/theme';
 
 import { AppState } from 'src/app/stores/app.reducers';
 import * as ProductActions from '../../stores/product-store/product.actions';
 import * as CategoryAction from '../../stores/category-store/category.actions';
+import { Category } from 'src/app/stores/category-store/category.model';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) { }
+  selectedCategory: string
+  categories: Observable<Category[]>
+
+  constructor(private store: Store<AppState>, private sidebarService: NbSidebarService) {
+    this.categories = this.store.select('category')
+   }
   
   ngOnInit() {
     this.store.dispatch(new ProductActions.GetProduct())
     this.store.dispatch(new CategoryAction.GetCategory())
+  }
+
+  toggle() {
+    this.sidebarService.toggle(false, 'left')
   }
 
 }

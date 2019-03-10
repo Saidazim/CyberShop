@@ -8,7 +8,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 const routes: Routes = [
   { path: '', component: AppComponent, children: [
       { path: '', component: LayoutComponent, children: [
-        { path: '', component: ProductListComponent, },
+        // { path: '', component: ProductListComponent, },
         ]},
     ]},
   { path: 'admin', loadChildren:'./admin/admin.module#AdminModule' }

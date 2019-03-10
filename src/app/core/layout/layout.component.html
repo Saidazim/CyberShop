@@ -1,13 +1,37 @@
 <nb-layout>
 
   <nb-layout-header fixed>
-  <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/admin">Admin</a>
+    <a href="#" (click)="toggle()" class="toggle">
+      <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+    </a>
+    <a nbButton size="xsmall" status="info" class="ml-auto m-1 text-white" routerLink="/admin">Admin</a>
   </nb-layout-header>
+
+  <nb-sidebar tag="left" responsive>
+
+    <nb-list>
+      <nb-list-item class="nb-category-list-item" (click)="selectedCategory = ''">
+          <div class="category-item-wrapper">
+            <fa-icon [icon]="['fas', 'crown']"></fa-icon>
+            <span class="category-item">Altogether</span>
+          </div>
+      </nb-list-item>
+      <nb-list-item class="nb-category-list-item" *ngFor="let category of categories | async" (click)="selectedCategory = category.name">
+        <div class="category-item-wrapper">
+          <fa-icon [icon]="['fas', 'robot']"></fa-icon>
+          <span class="category-item">{{ category.name }}</span>
+        </div>  
+      </nb-list-item>
+    </nb-list>
+
+  </nb-sidebar>
 
   <nb-layout-column>
     
-    <router-outlet></router-outlet>
-    
+    <!-- <router-outlet></router-outlet> -->
+  
+    <product-list [categoryName]="selectedCategory"></product-list>
+
   </nb-layout-column>
 
   <nb-layout-footer fixed>

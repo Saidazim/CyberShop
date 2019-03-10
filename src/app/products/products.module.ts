@@ -9,6 +9,7 @@ import { ProductListComponent } from './product-list/product-list.component';
   imports: [
     CommonModule,
     NbCardModule
-  ]
+  ],
+  exports: [ProductListComponent, NbCardModule]
 })
 export class ProductsModule { }
