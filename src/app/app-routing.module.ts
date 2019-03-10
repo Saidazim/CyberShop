@@ -10,8 +10,8 @@ const routes: Routes = [
       { path: '', component: LayoutComponent, children: [
         // { path: '', component: ProductListComponent, },
         ]},
-    ]},
-  { path: 'admin', loadChildren:'./admin/admin.module#AdminModule' }
+      { path: 'admin', loadChildren:'./admin/admin.module#AdminModule' },
+    ]}
 ];
 
 @NgModule({
