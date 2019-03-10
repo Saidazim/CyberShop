@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
-import { NbLayoutModule, NbButtonModule, NbSidebarModule, NbListModule } from '@nebular/theme';
+import { NbLayoutModule, NbButtonModule, NbSidebarModule, NbListModule, NbActionsModule, NbUserModule } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -17,7 +17,9 @@ import { ProductsModule } from '../products/products.module';
     NbSidebarModule,
     FontAwesomeModule,
     NbListModule,
-    ProductsModule
+    ProductsModule,
+    NbActionsModule,
+    NbUserModule,
   ]
 })
 export class CoreModule { }
