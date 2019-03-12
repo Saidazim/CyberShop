@@ -17,9 +17,9 @@ export class ProductEffects {
     .pipe(
       ofType(ProductActions.ProductActionTypes.GET_PRODUCT),
       switchMap(() =>  this.products.snapshotChanges().pipe(
-        map(categories => categories.map(category => {
-          const data = category.payload.doc.data() as Product[];
-          const id = category.payload.doc.id;
+        map(products => products.map(product => {
+          const data = product.payload.doc.data() as Product[];
+          const id = product.payload.doc.id;
           return { id, ...data };
         }))
       )
