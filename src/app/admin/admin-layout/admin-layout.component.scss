@@ -1,0 +1,26 @@
+.nb-sidebar-list-item{
+  cursor: pointer;
+}
+i{
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #a4abb3;
+  margin-top: 6px;
+}
+.nb-search{
+  font-size: 2rem;
+}
+.sidebar-item-wrapper{
+  margin: 5px 0px;
+}
+.sidebar-item{
+  margin-left: 50px;
+}
+.nb-theme-default nb-sidebar .scrollable{
+  padding: 0%;
+}
+.toggle{
+  font-size: 1.2rem; 
+  text-decoration: none;
+  cursor: pointer;
+}

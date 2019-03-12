@@ -1,10 +1,40 @@
 <nb-layout>
 
   <nb-layout-header fixed>
-    <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/">Client</a>
-    <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/admin/products">Products</a>
-    <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/admin/categories">Categories</a>
+    <a (click)="toggle()" class="toggle">
+      <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+    </a>
+    <div class="ml-auto">
+      <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/">Client</a>
+      <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/admin/products">Products</a>
+      <a nbButton size="xsmall" status="info" class="m-1 text-white" routerLink="/admin/categories">Categories</a>
+    </div>
   </nb-layout-header>
+  
+  <nb-sidebar tag="admin-left" responsive>
+    
+    <nb-list>
+      <nb-list-item class="nb-sidebar-list-item"  routerLink="/">
+          <div class="sidebar-item-wrapper">
+            <fa-icon [icon]="['fas', 'store']"></fa-icon>
+            <span class="sidebar-item">Shop</span>
+          </div>
+      </nb-list-item>
+      <nb-list-item class="nb-sidebar-list-item" routerLink="/admin/products">
+          <div class="sidebar-item-wrapper">
+            <fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon>
+            <span class="sidebar-item">Products</span>
+          </div>
+      </nb-list-item>
+      <nb-list-item class="nb-sidebar-list-item"  routerLink="/admin/categories">
+          <div class="sidebar-item-wrapper">
+            <fa-icon [icon]="['fas', 'tags']"></fa-icon>
+            <span class="sidebar-item">Categories</span>
+          </div>
+      </nb-list-item>
+    </nb-list>
+    
+  </nb-sidebar>
 
   <nb-layout-column>
 
