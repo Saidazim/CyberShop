@@ -28,10 +28,7 @@ export class AddCategory implements Action {
 export class UpdateCategory implements Action {
   readonly type = CategoryActionTypes.UPDATE_CATEGORY
 
-  constructor(public payload: {
-    category: Category,
-    index: number
-  }) { }
+  constructor(public payload: Category) {}
 }
 
 export class DeleteCategory implements Action {
