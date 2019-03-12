@@ -34,10 +34,12 @@ export class CategoryEditComponent implements OnInit {
       if (this.data.editMode) {
         this.categoryForm =this.fb.group({
           name: [this.data.category.name, Validators.required],
+          icon: [this.data.category.icon, Validators.required],
         })
       } else {
         this.categoryForm = this.fb.group({
           name: ['', Validators.required],
+          icon: ['', Validators.required],
         })
       }
     }
@@ -46,10 +48,8 @@ export class CategoryEditComponent implements OnInit {
       const form = this.categoryForm.value
       
       if (this.data.editMode) {
-        this.store.dispatch(new UpdateCategory({
-          category: form,
-          index: this.data.index
-        }))
+        let updatedCategory = {...this.data.category, ...form}
+        this.store.dispatch(new UpdateCategory(updatedCategory))
       } else {
         this.store.dispatch(new AddCategory(form))
       }
