@@ -16,7 +16,7 @@ import { CategoryEditComponent } from '../category-edit/category-edit.component'
 export class CategoryControlComponent implements OnInit {
 
   categories: Observable<Category[]>
-  displayedColumns: string[] = ['name', 'actions'];
+  displayedColumns: string[] = ['name', 'icon', 'actions'];
   
   constructor(private store: Store<AppState>, public dialog: MatDialog) {
     this.categories = this.store.select('category')
@@ -31,16 +31,15 @@ export class CategoryControlComponent implements OnInit {
     })
   }
 
-  onEdit(category: Category, index: number) {
+  onEdit(category: Category) {
     this.openDialog({
       editMode: true,
       category,
-      index
     })
   }
 
-  onDelete(index: number) {
-    this.store.dispatch(new DeleteCategory(index))
+  onDelete(id: number) {
+    this.store.dispatch(new DeleteCategory(id))
   }
 
   openDialog(data: object): void {

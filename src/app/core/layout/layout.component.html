@@ -26,7 +26,7 @@
       </nb-list-item>
       <nb-list-item class="nb-category-list-item" *ngFor="let category of categories | async" (click)="selectedCategory = category.name">
         <div class="category-item-wrapper">
-          <fa-icon [icon]="['fas', 'robot']"></fa-icon>
+          <fa-icon [icon]="['fas', category.icon]"></fa-icon>
           <span class="category-item">{{ category.name }}</span>
         </div>  
       </nb-list-item>
