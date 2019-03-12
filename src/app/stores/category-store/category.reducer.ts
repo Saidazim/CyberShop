@@ -5,6 +5,7 @@ import { Category } from './category.model';
 export const initialState: Category = {
   id: 'a', 
   name: 'Cell Phones',
+  icon: 'robot'
 }
 
 export function categoryReducer(state: Category[] = [initialState], action: CategoryActions.CategoryActions) {
