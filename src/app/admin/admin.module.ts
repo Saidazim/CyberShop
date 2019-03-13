@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NbCardModule, NbLayoutModule, NbButtonModule, NbInputModule, NbSelectModule, NbSidebarModule, NbListModule } from '@nebular/theme';
+import { NbCardModule, NbLayoutModule, NbButtonModule, NbInputModule, NbSelectModule, NbSidebarModule, NbListModule, NbUserModule } from '@nebular/theme';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -35,6 +35,7 @@ import { CategoryEditComponent } from './category-edit/category-edit.component';
     NbSelectModule,
     NbSidebarModule,
     NbListModule,
+    NbUserModule,
   ],
   entryComponents: [
     ProductEditComponent,
