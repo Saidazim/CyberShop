@@ -5,10 +5,16 @@
   
   <div mat-dialog-content>
     <p>Fill out product details</p>
-    <input type="text" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Name" formControlName="name">
+    <div *ngIf="productForm.get('photo')?.value as photo" class="photo">
+      <img [src]="photo" alt="photo">
+    </div>
+    <button type="button" class="my-3" nbButton status="success" size="xsmall" (click)="chosenFile.click()">Upload</button>
+    <input type="file"  name="file" (change)="onUpload($event.target.files[0])" #chosenFile style="display: none;">
+
+    <input type="text" class="mb-1" nbInput fullWidth fieldSize="small" placeholder="Name" formControlName="name">
     <input type="number" class="my-1" nbInput fullWidth fieldSize="small" placeholder="Price" formControlName="price">
     <input type="text" class="my-1" nbInput fullWidth fieldSize="large" placeholder="Description" formControlName="description">
-    <nb-select placeholder="Category" size="small" outline status="success" formControlName="category">
+    <nb-select placeholder="Category" size="xsmall" outline status="success" formControlName="category">
       <nb-option *ngFor="let category of categories | async; let i = index" [value]="category.name">{{ category.name }}</nb-option>
     </nb-select>
   </div>

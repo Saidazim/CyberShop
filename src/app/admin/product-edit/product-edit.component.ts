@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Store } from '@ngrx/store';
 
 import { UpdateProduct, AddProduct } from 'src/app/stores/product-store/product.actions';
@@ -24,11 +26,13 @@ export class ProductEditComponent implements OnInit {
 
   productForm: FormGroup
   categories: Observable<Category[]>
+  deafultPhotoUrl: string = 'https://firebasestorage.googleapis.com/v0/b/cybershop-e1faf.appspot.com/o/no-image.jpg?alt=media&token=8257e530-d8bf-44f7-ac75-046a50fd6c3d'
 
   constructor(private store: Store<AppState>,
     public dialogRef: MatDialogRef<ProductEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    private storage: AngularFireStorage,) { 
       this.categories = this.store.select('category')
     }
 
@@ -37,36 +41,51 @@ export class ProductEditComponent implements OnInit {
   }
 
   initForm() {
+    this.productForm = this.fb.group({
+      name: ['', Validators.required],
+      price: [0, Validators.required],
+      description: ['', Validators.required],
+      photo: [this.deafultPhotoUrl, Validators.required],
+      category: ['', Validators.required],
+    });
+
     if (this.data.editMode) {
-      this.productForm =this.fb.group({
-        name: [this.data.product.name, Validators.required],
-        price: [this.data.product.price, Validators.required],
-        description: [this.data.product.description, Validators.required],
-        category: [this.data.product.category, Validators.required],
-      })
-    } else {
-      this.productForm = this.fb.group({
-        name: ['', Validators.required],
-        price: [0, Validators.required],
-        description: ['', Validators.required],
-        category: ['', Validators.required],
-      })
+      this.productForm.patchValue(this.data.product)
     }
   }
 
   onSubmit() {
     const form = this.productForm.value
+
     if (this.data.editMode) {
       let updatedProduct = {...this.data.product, ...form}
       this.store.dispatch(new UpdateProduct(updatedProduct))
     } else {
       this.store.dispatch(new AddProduct(form))
     }
+
     this.dialogRef.close(form)
   }
 
   onCancel() {
     this.dialogRef.close()
+  }
+
+  async onUpload(photo: File) {
+    if (!photo) return
+
+    const data: UploadTaskSnapshot = await this.storage.upload(this.generateRandomString(), photo)
+    this.productForm.patchValue({ photo: await data.ref.getDownloadURL() })
+
+  }
+
+  generateRandomString() {
+    return 'xxxxxxxx-xxxx'.replace(/[x]/g, function(c) {
+      const r = (Math.random() * 16) | 0,
+        v = c === 'x' ? r : (r & 0x3) | 0x8;
+  
+      return v.toString(16);
+    });
   }
 
 }
