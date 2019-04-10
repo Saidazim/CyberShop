@@ -7,6 +7,7 @@ export const initialState: Product = {
   name: 'iPhone',
   price: 500,
   description: 'This is overrated phone. Do not buy it!',
+  photo: 'This is overrated phone. Do not buy it!',
   category: 'Smartphones,'
 }
 
