@@ -18,6 +18,7 @@ export class LayoutComponent implements OnInit {
 
   selectedCategory: string
   categories: Observable<Category[]>
+  displayCarousel: boolean = true
 
   constructor(private store: Store<AppState>, private sidebarService: NbSidebarService) {
     this.categories = this.store.select('category')
@@ -30,6 +31,16 @@ export class LayoutComponent implements OnInit {
 
   toggle() {
     this.sidebarService.toggle(false, 'left')
+  }
+
+  onAllCategories() {
+    this.selectedCategory = ''
+    this.displayCarousel = true
+  }
+
+  onCategory(categorName: string) {
+    this.selectedCategory = categorName
+    this.displayCarousel = false
   }
 
 }

@@ -18,13 +18,13 @@
   <nb-sidebar tag="left" responsive>
 
     <nb-list class="overflow-hidden">
-      <nb-list-item class="nb-category-list-item" (click)="selectedCategory = ''">
+      <nb-list-item class="nb-category-list-item" (click)="onAllCategories()">
           <div class="category-item-wrapper">
             <fa-icon [icon]="['fas', 'crown']"></fa-icon>
             <span class="category-item">Altogether</span>
           </div>
       </nb-list-item>
-      <nb-list-item class="nb-category-list-item" *ngFor="let category of categories | async" (click)="selectedCategory = category.name">
+      <nb-list-item class="nb-category-list-item" *ngFor="let category of categories | async" (click)="onCategory(category.name)">
         <div class="category-item-wrapper">
           <fa-icon [icon]="['fas', category.icon]"></fa-icon>
           <span class="category-item">{{ category.name }}</span>
@@ -37,6 +37,7 @@
   <nb-layout-column>
     
     <!-- <router-outlet></router-outlet> -->
+    <app-carousel *ngIf="displayCarousel"></app-carousel>
   
     <product-list [categoryName]="selectedCategory"></product-list>
 
