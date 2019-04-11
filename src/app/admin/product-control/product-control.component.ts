@@ -16,7 +16,7 @@ import { ProductEditComponent } from '../product-edit/product-edit.component';
 })
 export class ProductControlComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'price', 'description', 'category', 'actions'];
+  displayedColumns: string[] = ['name', 'photo', 'price', 'description', 'category', 'actions'];
   products: Observable<Product[]>
  
   constructor(private store: Store<AppState>, public dialog: MatDialog) {
