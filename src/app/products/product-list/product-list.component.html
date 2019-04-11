@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" *ngFor="let product of products | async; let i = index">
-    <nb-card>
+    <div class="col-lg-3 col-md-4 " *ngFor="let product of products | async; let i = index">
+    <nb-card class="cardnb">
         
         <nb-card-header>
           {{ product.name }}
         </nb-card-header>
         
-        <nb-card-body>
-          
-          <p>Description: {{ product.description }}</p>
-          <p></p>
+        <nb-card-body class="card-body">
+
+          <img src="{{ product.photo }}" class="photo" alt="photo">
+          <p class="m-3">Description: {{ product.description }}</p>
         
         </nb-card-body>
         
