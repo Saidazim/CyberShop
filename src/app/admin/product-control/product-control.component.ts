@@ -20,7 +20,7 @@ export class ProductControlComponent implements OnInit {
   products: Observable<Product[]>
  
   constructor(private store: Store<AppState>, public dialog: MatDialog) {
-    this.products = this.store.select('product')
+    this.products = this.store.select('product', 'productList')
    }
 
   ngOnInit() {

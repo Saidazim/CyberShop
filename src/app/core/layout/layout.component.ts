@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { NbSidebarService } from '@nebular/theme';
+import { NbSidebarService, NbSearchService } from '@nebular/theme';
 
 import { AppState } from 'src/app/stores/app.reducers';
 import * as ProductActions from '../../stores/product-store/product.actions';
@@ -20,7 +20,20 @@ export class LayoutComponent implements OnInit {
   categories: Observable<Category[]>
   displayCarousel: boolean = true
 
-  constructor(private store: Store<AppState>, private sidebarService: NbSidebarService) {
+  constructor(private store: Store<AppState>, 
+    private sidebarService: NbSidebarService,
+    private searchService: NbSearchService,) {
+    
+    this.searchService.onSearchSubmit()
+      .subscribe((data: any) => {
+        if (data.term) {
+          this.displayCarousel = false
+
+          this.store.dispatch(new ProductActions.FilterProduct(data.term))
+          this.selectedCategory = '';
+        }
+      })
+
     this.categories = this.store.select('category')
    }
   
@@ -30,12 +43,13 @@ export class LayoutComponent implements OnInit {
   }
 
   toggle() {
-    this.sidebarService.toggle(false, 'left')
+    this.sidebarService.toggle(true, 'left')
   }
 
   onAllCategories() {
     this.selectedCategory = ''
     this.displayCarousel = true
+    this.store.dispatch(new ProductActions.GetProduct())
   }
 
   onCategory(categorName: string) {

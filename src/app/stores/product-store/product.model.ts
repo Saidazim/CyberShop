@@ -6,3 +6,8 @@ export interface Product {
   photo: string,
   category: string,
 }
+
+export interface ProductState {
+  productList: Product[],
+  filteredProducts: Product[],
+}

@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Product } from '../../stores/product-store/product.model';
 import { AppState } from 'src/app/stores/app.reducers';
+import { notNullSelect } from 'src/app/utils';
 
 @Component({
   selector: 'product-list',
@@ -17,7 +18,7 @@ export class ProductListComponent implements OnInit, OnChanges{
   @Input() categoryName: string
 
   constructor(private store: Store<AppState>) {
-    this.products = this.store.select('product')
+    this.products = this.store.pipe(notNullSelect(state => state.product.filteredProducts))
   }
 
   ngOnInit() {
@@ -26,11 +27,11 @@ export class ProductListComponent implements OnInit, OnChanges{
 
   ngOnChanges() {
     if (this.categoryName) {
-      this.products = this.store.select('product').pipe(
+      this.products = this.store.select('product', 'productList').pipe(
         map(products => products.filter(product => product.category === this.categoryName))
       )
     } else {
-      this.products = this.store.select('product')
+      this.products = this.store.pipe(notNullSelect(state => state.product.filteredProducts))
     }
   }
   

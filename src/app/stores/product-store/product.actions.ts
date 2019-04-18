@@ -9,6 +9,7 @@ export enum ProductActionTypes {
   DELETE_PRODUCT = '[PRODUCT] Delete',
   GET_PRODUCT = '[PRODUCT] Get',
   GET_PRODUCT_SUCCESS = '[PRODUCT] Get Success',
+  FILTER_PRODUCT = '[PRODUCT] Filter',
 }
 
 export class GetProduct implements Action {
@@ -38,5 +39,10 @@ export class DeleteProduct implements Action {
 
   constructor(public payload: number) {}
 }
+export class FilterProduct implements Action {
+  readonly type = ProductActionTypes.FILTER_PRODUCT
 
-export type ProductActions = AddProduct | UpdateProduct | DeleteProduct | GetProductSuccess
+  constructor(public payload: string) {}
+}
+
+export type ProductActions = AddProduct | UpdateProduct | DeleteProduct | GetProductSuccess | FilterProduct
