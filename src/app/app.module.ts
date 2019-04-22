@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -42,6 +43,13 @@ library.add(fas, far);
     NbLayoutModule,
     CoreModule,
     ProductsModule,
+    NgxAuthFirebaseUIModule.forRoot({ ...environment.firebase },
+      () => 'CyberShop',
+     {
+       enableFirestoreSync: true,
+       toastMessageOnAuthSuccess: true,
+       toastMessageOnAuthError: true
+     }),
   ],
   providers: [],
   bootstrap: [AppComponent]
