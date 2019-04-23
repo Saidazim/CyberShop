@@ -12,9 +12,15 @@ import { ProductsModule } from '../products/products.module';
 import { LayoutComponent } from './layout/layout.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AuthComponent } from './auth/auth.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 @NgModule({
-  declarations: [LayoutComponent, CarouselComponent, AuthComponent,],
+  declarations: [
+    LayoutComponent,
+    CarouselComponent,
+    AuthComponent,
+    UserAccountComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
