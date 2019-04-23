@@ -45,7 +45,8 @@ library.add(fas, far);
     ProductsModule,
     NgxAuthFirebaseUIModule.forRoot({ ...environment.firebase },
       () => 'CyberShop',
-     {
+      {
+       authGuardFallbackURL: '/auth',
        enableFirestoreSync: true,
        toastMessageOnAuthSuccess: true,
        toastMessageOnAuthError: true
