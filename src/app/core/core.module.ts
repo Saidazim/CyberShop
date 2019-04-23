@@ -13,6 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AuthComponent } from './auth/auth.component';
 import { UserAccountComponent } from './user-account/user-account.component';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserAccountComponent } from './user-account/user-account.component';
     CarouselComponent,
     AuthComponent,
     UserAccountComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     CommonModule,

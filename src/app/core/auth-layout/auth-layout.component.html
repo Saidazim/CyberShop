@@ -1,0 +1,35 @@
+<nb-layout>
+
+    <nb-layout-header fixed>
+      
+      <div class="marginleft">
+        <a routerLink="/">
+          <img class="logoicon" src="../../../assets/images/logoIcon.png" alt="Home">
+        </a>
+      </div>
+      <nb-actions size="small" class="ml-auto">
+        <nb-action>
+          <a routerLink="/auth/account" style="text-decoration:none;">
+            <nb-user size="small" name="John Doe" title="Admin"></nb-user>
+          </a>
+        </nb-action>
+      </nb-actions>
+    </nb-layout-header>
+  
+  
+    <nb-layout-column>
+      <div class="row justify-content-center">
+          <div class="col-md-4">
+
+            <router-outlet></router-outlet>
+          
+          </div>
+      </div>
+  
+    </nb-layout-column>
+  
+    <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+    </nb-layout-footer>
+  
+  </nb-layout>

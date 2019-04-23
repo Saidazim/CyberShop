@@ -1,46 +1,12 @@
-<nb-layout>
-
-  <nb-layout-header fixed>
-    
-    <div class="marginleft">
-      <a routerLink="/">
-        <img class="logoicon" src="../../../assets/images/logoIcon.png" alt="Home">
-      </a>
-    </div>
-    <nb-actions size="small" class="ml-auto">
-      <nb-action>
-        <a routerLink="/admin" style="text-decoration:none;">
-          <nb-user size="small" name="John Doe" title="Admin"></nb-user>
-        </a>
-      </nb-action>
-    </nb-actions>
-  </nb-layout-header>
-
-
-  <nb-layout-column>
-    <div class="row justify-content-center">
-      <div class="col-md-4">
-        
-        <nb-card class="p-4">
-          <ngx-auth-firebaseui 
-          [providers]="[providers.Google, providers.Facebook]"
-          [guestEnabled]="false"
-          appearance="outline"
-          messageOnAuthSuccess="Here we go! The authentication was successful! "
-          messageOnAuthError="Oop! Something went wrong! Please retry again!"
-          goBackURL="/"
-          (onSuccess)="printUser($event)"
-          (onError)="printError()">
-          </ngx-auth-firebaseui>
-        </nb-card>
-
-      </div>
-    </div>
-
-  </nb-layout-column>
-
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
-  </nb-layout-footer>
-
-</nb-layout>
+<nb-card class="p-4">
+  <ngx-auth-firebaseui 
+  [providers]="[providers.Google, providers.Facebook]"
+  [guestEnabled]="false"
+  appearance="outline"
+  messageOnAuthSuccess="Here we go! The authentication was successful! "
+  messageOnAuthError="Oop! Something went wrong! Please retry again!"
+  goBackURL="/"
+  (onSuccess)="printUser($event)"
+  (onError)="printError()">
+  </ngx-auth-firebaseui>
+</nb-card>
