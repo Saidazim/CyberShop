@@ -4,13 +4,17 @@ import { NbLayoutModule, NbButtonModule, NbSidebarModule, NbListModule, NbAction
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MatIconModule } from '@angular/material';
 
-import { LayoutComponent } from './layout/layout.component';
 import { ProductsModule } from '../products/products.module';
+import { LayoutComponent } from './layout/layout.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [LayoutComponent, CarouselComponent,],
+  declarations: [LayoutComponent, CarouselComponent, AuthComponent,],
   imports: [
     CommonModule,
     RouterModule,
@@ -24,6 +28,9 @@ import { CarouselComponent } from './carousel/carousel.component';
     NbUserModule,
     NbSearchModule,
     CarouselModule.forRoot(),
+    NgxAuthFirebaseUIModule,
+    AngularFireAuthModule,
+    MatIconModule,
   ]
 })
 export class CoreModule { }
