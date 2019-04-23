@@ -19,7 +19,8 @@ const routes: Routes = [
         { path: '', component: AuthComponent },
         { path: 'account', component: UserAccountComponent, canActivate: [LoggedInGuard] },
       ]},
-    ]}
+    ]},
+    { path: '**', redirectTo: '/'}
 ];
 
 @NgModule({
