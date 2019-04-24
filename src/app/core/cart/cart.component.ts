@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
   totalSum: Observable<number>
   authState: boolean
   checkoutProducts: CartProduct[]
-
+  userName: string
   
   
   constructor(
@@ -34,6 +34,11 @@ export class CartComponent implements OnInit {
     this.totalSum = this.store.select('cart', 'totalSum')
 
     this.cartList.subscribe(products => this.checkoutProducts = products)
+    this.afAuth.user.subscribe(user => {
+     if (user && user.displayName) {
+       this.userName = user.displayName
+     }
+    })
 
   }
 
@@ -54,11 +59,22 @@ export class CartComponent implements OnInit {
   }
 
   public checkout() {
-    const dialogRef = this.dialog.open(CheckoutComponent, { data: { products: this.checkoutProducts} })
+    if (!this.userName) {
+      this.router.navigate(['/auth'])
+    } else {
+      const dialogRef = this.dialog.open(CheckoutComponent, {
+        data: {
+          products: this.checkoutProducts,
+          userName: this.userName
+        }
+      })
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed', result)
+      });
+    }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result)
-    });
+
   }
   
 }
