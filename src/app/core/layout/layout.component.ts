@@ -6,6 +6,7 @@ import { NbSidebarService, NbSearchService } from '@nebular/theme';
 import { AppState } from 'src/app/stores/app.reducers';
 import * as ProductActions from '../../stores/product-store/product.actions';
 import * as CategoryAction from '../../stores/category-store/category.actions';
+import * as CartAction from '../../stores/cart-store/cart.actions';
 import { Category } from 'src/app/stores/category-store/category.model';
 
 @Component({
@@ -19,6 +20,7 @@ export class LayoutComponent implements OnInit {
   selectedCategory: string
   categories: Observable<Category[]>
   displayCarousel: boolean = true
+  cartCount: Observable<number>
 
   constructor(private store: Store<AppState>, 
     private sidebarService: NbSidebarService,
@@ -35,11 +37,13 @@ export class LayoutComponent implements OnInit {
       })
 
     this.categories = this.store.select('category')
+    this.cartCount = this.store.select('cart', 'productsCount')
    }
   
   ngOnInit() {
     this.store.dispatch(new ProductActions.GetProduct())
     this.store.dispatch(new CategoryAction.GetCategory())
+    this.store.dispatch(new CartAction.GetCartList())
   }
 
   toggle() {

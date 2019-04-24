@@ -1,11 +1,20 @@
 .nb-category-list-item{
   cursor: pointer;
 }
-nb-action i{
-  font-size: 1.4rem;
-  text-decoration: none;
-  color: #a4abb3;
-  margin-top: 6px;
+nb-action{
+  i.shoppping_cart{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #a4abb3;
+    margin-top: 5px;
+  }
+  
+  i.favourite-products{
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: red;
+    margin-top: 5px;
+  }
 }
 .nb-search{
   font-size: 2rem;

@@ -2,19 +2,21 @@
   <div class="row">
     <div class="col-lg-3 col-md-4 " *ngFor="let product of products | async; let i = index">
     <nb-card class="cardnb">
-        
-        <nb-card-header>
-          {{ product.name }}
-        </nb-card-header>
-        
+      
         <nb-card-body class="card-body">
-
           <img src="{{ product.photo }}" class="photo" alt="photo">
-          <p class="m-3">Description: {{ product.description }}</p>
+          <div class="m-3">
+            <h5>{{ product.name }}</h5>
+            <p>{{ product.description }}</p>
+
+          </div>
         
         </nb-card-body>
         
-        <nb-card-footer>Price:<b> {{ product.price }} UZS </b></nb-card-footer>
+        <nb-card-footer>
+          <b> ${{ product.price }} </b>
+          <i class="material-icons float-right" (click)="addToCart(product)">add_shopping_cart</i>
+        </nb-card-footer>
 
       </nb-card>
     </div>
