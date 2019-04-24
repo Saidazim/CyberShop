@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
   cartList: Observable<CartProduct[]>
   totalSum: Observable<number>
   authState: boolean
+  checkoutProducts: CartProduct[]
 
   
   
@@ -31,6 +32,9 @@ export class CartComponent implements OnInit {
   ) { 
     this.cartList = this.store.select('cart', 'products')
     this.totalSum = this.store.select('cart', 'totalSum')
+
+    this.cartList.subscribe(products => this.checkoutProducts = products)
+
   }
 
   ngOnInit() {
@@ -50,7 +54,7 @@ export class CartComponent implements OnInit {
   }
 
   public checkout() {
-    const dialogRef = this.dialog.open(CheckoutComponent, { data: { prodcuts: this.cartList} })
+    const dialogRef = this.dialog.open(CheckoutComponent, { data: { products: this.checkoutProducts} })
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result)

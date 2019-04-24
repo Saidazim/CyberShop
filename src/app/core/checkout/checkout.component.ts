@@ -27,8 +27,8 @@ export class CheckoutComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb: FormBuilder,
     private db: AngularFirestore,
-    private store: Store<AppState>,) {
-     }
+    private store: Store<AppState>, ) {
+    }
 
   ngOnInit() {
     this.initForm()
@@ -44,11 +44,12 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     const form = this.checkoutForm.value
+    let order = { ...form, products: this.data.products }
 
     this.store.dispatch(new ClearCart)
-    this.ordersCollection.add(form)
+    this.ordersCollection.add(order)
     
-    this.dialogRef.close(form)
+    this.dialogRef.close(order)
   }
 
   onCancel() {
