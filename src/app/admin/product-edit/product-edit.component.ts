@@ -12,10 +12,10 @@ import { Category } from 'src/app/stores/category-store/category.model';
 import { Observable } from 'rxjs';
 
 export interface DialogData{
-  editMode: boolean,
-  product: Product,
-  index: number
-  }
+  editMode: boolean;
+  product: Product;
+  index: number;
+}
 
 @Component({
   selector: 'app-product-edit',
@@ -50,7 +50,7 @@ export class ProductEditComponent implements OnInit {
     });
 
     if (this.data.editMode) {
-      this.productForm.patchValue(this.data.product)
+      this.productForm.setValue(this.data.product)
     }
   }
 
