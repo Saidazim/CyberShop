@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthProvider } from 'ngx-auth-firebaseui';
 import { Router } from '@angular/router';
 
@@ -13,7 +12,6 @@ export class AuthComponent implements OnInit {
 
   providers = AuthProvider;
   constructor(
-    public afAuth: AngularFireAuth,
     private router: Router) {
    }
 
