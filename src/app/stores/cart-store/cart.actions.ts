@@ -7,6 +7,7 @@ export enum CartActionTypes {
   ADD_TO_CART = '[CART] Add',
   REMOVE_FROM_CART = '[CART] Remove',
   UPDATE_PRODUCT_QUANTITY = '[CART] Update product quantity',
+  CLEAR_CART = '[CART] Clear',
 }
 
 export class GetCartList implements Action {
@@ -34,4 +35,9 @@ export class UpdateProductQuantity implements Action {
   }
 }
 
-export type CartActions = GetCartList | AddToCart | RemoveFromCart | UpdateProductQuantity
+export class ClearCart implements Action {
+  readonly type = CartActionTypes.CLEAR_CART
+}
+
+
+export type CartActions = GetCartList | AddToCart | RemoveFromCart | UpdateProductQuantity | ClearCart

@@ -91,6 +91,13 @@ export function cartReducer(state: CartState = initialState, action: CartActions
 
       return { products, productsCount, totalSum }
     }
+      
+      
+    case CartActions.CartActionTypes.CLEAR_CART: {
+      localStorage.clear()
+
+      return { products: [], productsCount: 0, totalSum:0 }
+    }
     
     default:
       return state

@@ -8,6 +8,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { AuthComponent } from './core/auth/auth.component';
 import { UserAccountComponent } from './core/user-account/user-account.component';
 import { AuthLayoutComponent } from './core/auth-layout/auth-layout.component';
+import { CartComponent } from './core/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent, children: [
@@ -20,6 +21,7 @@ const routes: Routes = [
         { path: 'account', component: UserAccountComponent, canActivate: [LoggedInGuard] },
       ]},
     ]},
+    { path: 'cart', component: CartComponent },
     { path: '**', redirectTo: '/'}
 ];
 
