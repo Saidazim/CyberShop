@@ -12,6 +12,7 @@ import { ClearCart } from 'src/app/stores/cart-store/cart.actions';
 export interface DialogData{
   products: CartProduct[];
   userName: string;
+  total: number;
 }
 
 @Component({
@@ -24,6 +25,7 @@ export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup
   ordersCollection: AngularFirestoreCollection = this.db.collection<any>('orders')
   userName: string
+  totalSum: number
 
   constructor(public dialogRef: MatDialogRef<CheckoutComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -32,6 +34,7 @@ export class CheckoutComponent implements OnInit {
     private store: Store<AppState>,
   ) {
     this.userName = this.data.userName
+    this.totalSum = this.data.total
     }
 
   ngOnInit() {
@@ -48,7 +51,7 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     const form = this.checkoutForm.value
-    let order = { ...form, userName: this.userName, products: this.data.products }
+    let order = { ...form, userName: this.userName, totalSum: this.totalSum, products: this.data.products }
 
     this.store.dispatch(new ClearCart)
     this.ordersCollection.add(order)

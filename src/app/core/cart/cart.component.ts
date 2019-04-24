@@ -19,9 +19,9 @@ import { CheckoutComponent } from '../checkout/checkout.component';
 export class CartComponent implements OnInit {
   cartList: Observable<CartProduct[]>
   totalSum: Observable<number>
-  authState: boolean
   checkoutProducts: CartProduct[]
   userName: string
+  checkoutTotal: number
   
   
   constructor(
@@ -39,6 +39,7 @@ export class CartComponent implements OnInit {
        this.userName = user.displayName
      }
     })
+    this.totalSum.subscribe(total => this.checkoutTotal = total)
 
   }
 
@@ -65,7 +66,8 @@ export class CartComponent implements OnInit {
       const dialogRef = this.dialog.open(CheckoutComponent, {
         data: {
           products: this.checkoutProducts,
-          userName: this.userName
+          userName: this.userName,
+          total: this.checkoutTotal
         }
       })
   
