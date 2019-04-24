@@ -39,7 +39,7 @@ export class ProductControlComponent implements OnInit {
     })
   }
 
-  onDelete(id: number) {
+  onDelete(id: string) {
     this.store.dispatch(new DeleteProduct(id))
   }
 

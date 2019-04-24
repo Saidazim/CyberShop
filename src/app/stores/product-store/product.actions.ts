@@ -37,7 +37,7 @@ export class UpdateProduct implements Action {
 export class DeleteProduct implements Action {
   readonly type = ProductActionTypes.DELETE_PRODUCT
 
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 export class FilterProduct implements Action {
   readonly type = ProductActionTypes.FILTER_PRODUCT
