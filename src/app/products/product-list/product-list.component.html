@@ -6,7 +6,11 @@
         <nb-card-body class="card-body">
           <img src="{{ product.photo }}" class="photo" alt="photo">
           <div class="m-3">
-            <h5>{{ product.name }}</h5>
+            <h5>{{ product.name }}
+              <span>
+                <i class="material-icons float-right favourite-products" (click)="addToFavourites(product)">favorite</i>
+              </span>
+            </h5>
             <p>{{ product.description }}</p>
 
           </div>
