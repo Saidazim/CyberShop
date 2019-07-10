@@ -1,0 +1,65 @@
+<nb-layout>
+
+    <nb-layout-header fixed>
+      
+      <div class="marginleft">
+        <a routerLink="/">
+          <img class="logoicon" src="../../../assets/images/logoIcon.png" alt="Home">
+        </a>
+      </div>
+      <nb-actions size="small" class="ml-auto">
+        <nb-action>
+          <a routerLink="/auth/account" style="text-decoration:none;">
+            <nb-user size="small" name="John Doe" title="Admin"></nb-user>
+          </a>
+        </nb-action>
+      </nb-actions>
+    </nb-layout-header>
+  
+  
+    <nb-layout-column>
+      <div class="row justify-content-center">
+          <div class="col-md-10">
+            
+              <div class="container">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 " *ngFor="let product of products | async">
+                    <nb-card class="cardnb">
+                      
+                        <nb-card-body class="card-body">
+                          <img src="{{ product.photo }}" class="photo" alt="photo">
+                          <div class="m-3">
+                            <h5>{{ product.name }}
+                              <span>
+                                <i class="material-icons float-right remove-favourite-product" (click)="removeFromFavourites(product)">clear</i>
+                              </span>
+                            </h5>
+                            <p>{{ product.description }}</p>
+                
+                          </div>
+                        
+                        </nb-card-body>
+                        
+                        <nb-card-footer>
+                          <b> ${{ product.price }} </b>
+                          <i class="material-icons float-right" (click)="addToCart(product)">add_shopping_cart</i>
+                        </nb-card-footer>
+                
+                      </nb-card>
+                    </div>
+                  </div>
+                </div>
+                
+
+          </div>
+      </div>
+  
+    </nb-layout-column>
+  
+    <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+    </nb-layout-footer>
+  
+  </nb-layout>
+  
+  

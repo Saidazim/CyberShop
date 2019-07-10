@@ -1,0 +1,31 @@
+.logoicon{
+  width: 55px;
+  height: 55px;
+}
+
+.marginleft{
+  margin-left: 84px;
+}
+
+.card-body{
+  padding: 0;
+}
+
+.photo{
+  height: 272px;
+  width: 100%;
+  display: block;
+}
+
+i{
+  cursor: pointer;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #28a745;
+}
+
+i.remove-favourite-product{
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: red;
+}

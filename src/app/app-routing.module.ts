@@ -9,6 +9,7 @@ import { AuthComponent } from './core/auth/auth.component';
 import { UserAccountComponent } from './core/user-account/user-account.component';
 import { AuthLayoutComponent } from './core/auth-layout/auth-layout.component';
 import { CartComponent } from './core/cart/cart.component';
+import { FavouritesComponent } from './core/favourites/favourites.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent, children: [
@@ -22,6 +23,7 @@ const routes: Routes = [
       ]},
     ]},
     { path: 'cart', component: CartComponent },
+    { path: 'favourites', component: FavouritesComponent },
     { path: '**', redirectTo: '/'}
 ];
 

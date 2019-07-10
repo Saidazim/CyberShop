@@ -16,6 +16,7 @@ import { UserAccountComponent } from './user-account/user-account.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AuthLayoutComponent,
     CartComponent,
     CheckoutComponent,
+    FavouritesComponent,
   ],
   imports: [
     CommonModule,
