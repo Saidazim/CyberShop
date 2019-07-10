@@ -3,13 +3,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { UpdateProduct, AddProduct } from 'src/app/stores/product-store/product.actions';
 import { Product } from '../../stores/product-store/product.model';
 import { AppState } from 'src/app/stores/app.reducers';
 import { Category } from 'src/app/stores/category-store/category.model';
-import { Observable } from 'rxjs';
 
 export interface DialogData{
   editMode: boolean;
@@ -50,7 +50,7 @@ export class ProductEditComponent implements OnInit {
     });
 
     if (this.data.editMode) {
-      this.productForm.setValue(this.data.product)
+      this.productForm.patchValue(this.data.product)
     }
   }
 
