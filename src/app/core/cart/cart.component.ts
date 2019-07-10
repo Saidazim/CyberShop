@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { CartProduct } from 'src/app/stores/cart-store/cart.model';
 import { AppState } from 'src/app/stores/app.reducers';
 import * as CartAction from '../../stores/cart-store/cart.actions';
@@ -17,6 +16,7 @@ import { CheckoutComponent } from '../checkout/checkout.component';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  
   cartList: Observable<CartProduct[]>
   totalSum: Observable<number>
   checkoutProducts: CartProduct[]
